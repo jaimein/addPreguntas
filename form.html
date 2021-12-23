@@ -30,37 +30,37 @@
             </tr>
             <tr>
                 <td><label>Opción 1:</label> </td>
-                <td><input type="text" id="opc1" required> <br />
+                <td><input class="respuestas" type="text" id="opc1" onchange="changeRadioButton(event)" required> <br />
                 </td>
             </tr>
             <tr>
                 <td><label>Opción 2:</label> </td>
-                <td><input type="text" id="opc2" required> <br />
+                <td><input class="respuestas" type="text" id="opc2" onchange="changeRadioButton(event)" required disabled> <br />
                 </td>
             </tr>
             <tr>
                 <td><label>Opción 3:</label> </td>
-                <td><input type="text" id="opc3" required> <br />
+                <td><input class="respuestas" type="text" id="opc3" onchange="changeRadioButton(event)" disabled> <br />
                 </td>
             </tr>
             <tr>
                 <td><label>Opción 4:</label> </td>
-                <td><input type="text" id="opc4"> <br />
+                <td><input class="respuestas" type="text" id="opc4" onchange="changeRadioButton(event)" disabled> <br />
                 </td>
             </tr>
             <tr>
                 <td><label>Opción 5:</label> </td>
-                <td><input type="text" id="opc5"> <br />
+                <td><input class="respuestas" type="text" id="opc5" onchange="changeRadioButton(event)" disabled> <br />
                 </td>
             </tr>
         </table>
         <br>
         <label for="">Respuesta Correcta</label><br />
-        <input type="radio" id="ropc1" name="respCorrecta" value="opc1" /> <label for="opc1">Opción 1</label><br />
-        <input type="radio" id="ropc2" name="respCorrecta" value="opc2" /> <label for="opc2">Opción 2</label><br />
-        <input type="radio" id="ropc3" name="respCorrecta" value="opc3" /> <label for="opc3">Opción 3</label><br />
-        <input type="radio" id="ropc4" name="respCorrecta" value="opc4" /> <label for="opc4">Opción 4</label><br />
-        <input type="radio" id="ropc5" name="respCorrecta" value="opc5" /> <label for="opc5">Opción 5</label><br />
+        <input type="radio" id="ropc1" name="respCorrecta" value="opc1" disabled=true/> <label for="opc1">Opción 1</label><br />
+        <input type="radio" id="ropc2" name="respCorrecta" value="opc2" disabled=true/> <label for="opc2">Opción 2</label><br />
+        <input type="radio" id="ropc3" name="respCorrecta" value="opc3" disabled=true/> <label for="opc3">Opción 3</label><br />
+        <input type="radio" id="ropc4" name="respCorrecta" value="opc4" disabled=true/> <label for="opc4">Opción 4</label><br />
+        <input type="radio" id="ropc5" name="respCorrecta" value="opc5" disabled=true/> <label for="opc5">Opción 5</label><br />
         <br>
         <button type="button" onclick="submitform();">Enviar formulario</button>
     </form>
@@ -91,11 +91,27 @@
 
         });
 
+        function changeRadioButton(e) {
+            var name = "r" + e.target.id;
+            var id = e.target.id;
+            var num = id.substring(3, 4);
+            num++;
+            var input = "opc" + (num);
+            var rb = document.getElementById(name);
+            if (e.target.value.length == 0) {
+                rb.disabled = true;
+                document.getElementById(input).disabled = true;
+            } else {
+                rb.disabled = false;
+                document.getElementById(input).disabled = false;
+            }
+        }
+
         function submitform() {
 
             var respCorrecta;
             var respuestas = new Array();
-            for (var i = 1; i < 6; i++) {
+            for (var i = 1; i <= document.querySelectorAll(".respuestas").length; i++) {
                 search = 'opc' + i;
                 search;
                 texto = document.getElementById(search).value;
