@@ -13,7 +13,9 @@
             </tr>
             <tr>
                 <td><label for="Asignatura">Asignatura:</label> </td>
-                <td><input type="text" id="Asignatura"> <br />
+                <td><input type="text" id="Asignatura" list="listAsignatura">
+                    <datalist id="listAsignatura"></datalist>
+                    <br />
                 </td>
             </tr>
             <tr>
@@ -64,6 +66,31 @@
     </form>
     <div id=result></div>
     <script>
+        window.addEventListener("load", function() {
+
+            // create and populate datalist
+            function addToDataList(data) {
+                data.forEach(elem => {
+                    option = document.createElement("option");
+                    option.value = elem.aNombre;
+                    listAsignatura.append(option);
+                });
+            }
+
+            // ajax to read json file
+            var xhr = new XMLHttpRequest();
+            xhr.onload = function() {
+                if (xhr.status == 200) {
+                    var res = JSON.parse(this.responseText);
+                    // create options datalist from json file
+                    addToDataList(res);
+                }
+            }
+            xhr.open("GET", "https://preguntasjin.somee.com/api/Preguntas/Asignaturas");
+            xhr.send(null);
+
+        });
+
         function submitform() {
 
             var respCorrecta;
