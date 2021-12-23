@@ -5,66 +5,126 @@
     <link rel="stylesheet" href="./dist/notifications.css">
     <script src="./dist/notifications.js"></script>
 </head>
+<style>
+    input[type=text],
+    select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    
+    input[type=submit] {
+        width: 100%;
+        background-color: #4CAF50;
+        color: white;
+        padding: 14px 20px;
+        margin: 8px 0;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    
+    input[type=submit]:hover {
+        background-color: #45a049;
+    }
+    
+    div {
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+    }
+    
+    table {
+        width: 50%;
+        text-align: center;
+    }
+</style>
 
 <body>
-    <form id="form">
-        <table>
-            </td>
-            </tr>
-            <tr>
-                <td><label for="Asignatura">Asignatura:</label> </td>
-                <td><input type="text" id="Asignatura" list="listAsignatura" required>
-                    <datalist id="listAsignatura"></datalist>
-                    <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label for="Enunciado">Enunciado:</label> </td>
-                <td><input type="text" id="Enunciado" required> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Examenes:</label> </td>
-                <td><input type="text" id="examenes"> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Opción 1:</label> </td>
-                <td><input class="respuestas" type="text" id="opc1" onchange="changeRadioButton(event)" required> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Opción 2:</label> </td>
-                <td><input class="respuestas" type="text" id="opc2" onchange="changeRadioButton(event)" required disabled> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Opción 3:</label> </td>
-                <td><input class="respuestas" type="text" id="opc3" onchange="changeRadioButton(event)" disabled> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Opción 4:</label> </td>
-                <td><input class="respuestas" type="text" id="opc4" onchange="changeRadioButton(event)" disabled> <br />
-                </td>
-            </tr>
-            <tr>
-                <td><label>Opción 5:</label> </td>
-                <td><input class="respuestas" type="text" id="opc5" onchange="changeRadioButton(event)" disabled> <br />
-                </td>
-            </tr>
-        </table>
-        <br>
-        <label for="">Respuesta Correcta</label><br />
-        <input type="radio" id="ropc1" name="respCorrecta" value="opc1" disabled=true/> <label for="opc1">Opción 1</label><br />
-        <input type="radio" id="ropc2" name="respCorrecta" value="opc2" disabled=true/> <label for="opc2">Opción 2</label><br />
-        <input type="radio" id="ropc3" name="respCorrecta" value="opc3" disabled=true/> <label for="opc3">Opción 3</label><br />
-        <input type="radio" id="ropc4" name="respCorrecta" value="opc4" disabled=true/> <label for="opc4">Opción 4</label><br />
-        <input type="radio" id="ropc5" name="respCorrecta" value="opc5" disabled=true/> <label for="opc5">Opción 5</label><br />
-        <br>
-        <button type="button" onclick="submitform();">Enviar formulario</button>
-    </form>
-    <div id=result></div>
+
+    <div>
+        <form id="form">
+            <fieldset>
+                <legend>EIR:</legend>
+                <table>
+                    </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Asignatura">Asignatura:</label> </td>
+                        <td><input type="text" id="Asignatura" list="listAsignatura" required>
+                            <datalist id="listAsignatura"></datalist>
+                            <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="Enunciado">Enunciado:</label> </td>
+                        <td><input type="text" id="Enunciado" required> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Examenes:</label> </td>
+                        <td><input type="text" id="examenes"> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Opción 1:</label> </td>
+                        <td><input class="respuestas" type="text" id="opc1" onchange="changeRadioButton(event)" required> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Opción 2:</label> </td>
+                        <td><input class="respuestas" type="text" id="opc2" onchange="changeRadioButton(event)" required disabled> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Opción 3:</label> </td>
+                        <td><input class="respuestas" type="text" id="opc3" onchange="changeRadioButton(event)" disabled> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Opción 4:</label> </td>
+                        <td><input class="respuestas" type="text" id="opc4" onchange="changeRadioButton(event)" disabled> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label>Opción 5:</label> </td>
+                        <td><input class="respuestas" type="text" id="opc5" onchange="changeRadioButton(event)" disabled> <br />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><label for="">Respuesta Correcta</label></td>
+
+                        <td><input type="radio" id="ropc1" name="respCorrecta" value="opc1" disabled=true/> <label for="opc1">Opción 1</label><br />
+                            <tr>
+                                <td></td>
+                                <td><input type="radio" id="ropc2" name="respCorrecta" value="opc2" disabled=true/> <label for="opc2">Opción 2</label></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="radio" id="ropc3" name="respCorrecta" value="opc3" disabled=true/> <label for="opc3">Opción 3</label><br /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="radio" id="ropc4" name="respCorrecta" value="opc4" disabled=true/> <label for="opc4">Opción 4</label><br /></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td><input type="radio" id="ropc5" name="respCorrecta" value="opc5" disabled=true/> <label for="opc5">Opción 5</label><br /></td>
+                            </tr>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><input type="reset" value="Reset"></td>
+                        <td><button type="button" onclick="submitform();">Enviar formulario</button></td>
+                    </tr>
+                </table>
+            </fieldset>
+        </form>
+    </div>
     <script>
         window.addEventListener("load", function() {
 
